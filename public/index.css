@@ -1,0 +1,33 @@
+ul {
+  list-style-type: none;
+  font-family: "pokefont", pokefont, serif;
+}
+
+body {
+  background-image: url('/img/sea.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#menu {
+  display: block;
+  width: 600px;
+  height: 400px;
+  background-color: white;
+  margin: 50px auto;
+}
+
+#island {
+  display: block;
+  margin: 50px auto;
+  background-image: url('/img/grass.png');
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
