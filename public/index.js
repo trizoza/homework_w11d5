@@ -10,20 +10,23 @@ var app = function(){
   var increment = 20;
   var grass = document.createElement('img');
   grass.src = "img/grass.png";
+  var pokepic = document.createElement('img');
   var x = 300;
   var y = 200;
   var canvas = document.querySelector("#island");
   var context = canvas.getContext('2d');
   var x1 = 0;
   var y1 = 0;
+  var poke1 = {};
+  var poke1pic = document.createElement('img');
   var x2 = 0;
   var y2 = 0;
+  var poke2 = {};
+  var poke2pic = document.createElement('img');
   var x3 = 0;
   var y3 = 0;
-
-  /*
-  https://img.pokemondb.net/sprites/red-blue/normal/wynaut.png
-  */
+  var poke3 = {};
+  var poke3pic = document.createElement('img');
 
   ///////////// CREATION OF POKEMON LIST //////////////////////////
 
@@ -48,7 +51,6 @@ var app = function(){
       };
       eachPokemon.name = pokemonsObjects[i].pokemon_species.name;
       eachPokemon.attack = getRandomInt(30, 100);
-      console.log(eachPokemon);
       eachPokemon.name = eachPokemon.name.substring(0, 1).toUpperCase() + eachPokemon.name.substring(1);
       pokemons.push(eachPokemon);
     }
@@ -67,16 +69,14 @@ var app = function(){
 
   var handleSelectPokemon = function(event) {
     if (player.length == 0) {
-      console.log(this.value);
-      player.push(this.value);
-      console.log('ash pokemon',player);
       for (var each of pokemons) {
-        if (each === this.value) {
-          var indexOfEach = pokemons.indexOf(each);
-          pokemons.splice(indexOfEach, 1);
+        if (each.name === this.value) {
+          player.push(each);
         }
       }
     }
+    console.log(player[0]);
+    pokepic.src = "https://img.pokemondb.net/sprites/red-blue/normal/" + player[0].name.toLowerCase() + ".png";
   }
 
   var select = document.querySelector('#pokemon-select');
@@ -111,7 +111,7 @@ var app = function(){
     if (x === x1 && y === y1) {
       var foundScreen = document.querySelector('.found');
       var foundText = document.createElement('p');
-      foundScreen.innerText = "You have found " + field[0].name + " with attack " + field[0].attack + "!";
+      foundScreen.innerText = "You have found " + poke1.name + " with attack " + poke1.attack + "!";
       var questionText = document.createElement('p'); 
       questionText.innerHTML = "<p>Do you want to <u>f</u>ight him?</p>";
       foundScreen.appendChild(foundText);
@@ -123,7 +123,7 @@ var app = function(){
     if (x === x2 && y === y2) {
       var foundScreen = document.querySelector('.found');
       var foundText = document.createElement('p');
-      foundScreen.innerText = "You have found " + field[1].name + " with attack " + field[1].attack + "!";
+      foundScreen.innerText = "You have found " + poke2.name + " with attack " + poke2.attack + "!";
       var questionText = document.createElement('p'); 
       questionText.innerHTML = "<p>Do you want to <u>f</u>ight him?</p>";
       foundScreen.appendChild(foundText);
@@ -135,7 +135,7 @@ var app = function(){
     if (x === x3 && y === y3) {
       var foundScreen = document.querySelector('.found');
       var foundText = document.createElement('p');
-      foundScreen.innerText = "You have found " + field[2].name + " with attack " + field[2].attack + "!";
+      foundScreen.innerText = "You have found " + poke3.name + " with attack " + poke3.attack + "!";
       var questionText = document.createElement('p'); 
       questionText.innerHTML = "<p>Do you want to <u>f</u>ight him?</p>";
       foundScreen.appendChild(foundText);
@@ -153,12 +153,21 @@ var app = function(){
         context.drawImage(grass, 335, 166, 335, 166);
         context.drawImage(grass, 0, 332, 335, 166);
         context.drawImage(grass, 335, 332, 335, 166);
-        context.drawImage(ash, x1 -20, y1 -20, ashWidth, ashHeight);
-        context.drawImage(ash, x2 -20, y2 -20, ashWidth, ashHeight);
-        context.drawImage(ash, x3 -20, y3 -20, ashWidth, ashHeight);
+        if (poke1 != {}) {
+          
+          context.drawImage(poke1pic, x1 -20, y1 -20, ashWidth, ashHeight);
+        }
+        if (poke2 != {}) {
+  
+          context.drawImage(poke2pic, x2 -20, y2 -20, ashWidth, ashHeight);
+        }
+        if (poke3 != {}) {
+        
+          context.drawImage(poke3pic, x3 -20, y3 -20, ashWidth, ashHeight);
+        }
       }
       else if (cheat === 'almighty') {
-        power = 101;
+        player[0].attack = 101;
       }
     }
 
@@ -172,21 +181,19 @@ var app = function(){
   var generateFreePokemons = function() {
     x1 = getRandomInt(2/2, 58/2)*increment;
     y1 = getRandomInt(2/2, 38/2)*increment;
-    console.log('first free pokemon',x1, y1);
+    poke1 = pokemons[getRandomInt(0, pokemons.length)];
+    poke1pic.src = "https://img.pokemondb.net/sprites/red-blue/normal/" + poke1.name.toLowerCase() + ".png";
+    console.log('first free pokemon',x1, y1, poke1.name);
     x2 = getRandomInt(2/2, 58/2)*increment;
     y2 = getRandomInt(2/2, 38/2)*increment;
-    console.log('second free pokemon',x2, y2);
+    poke2 = pokemons[getRandomInt(0, pokemons.length)];
+    poke2pic.src = "https://img.pokemondb.net/sprites/red-blue/normal/" + poke2.name.toLowerCase() + ".png";
+    console.log('second free pokemon',x2, y2, poke2.name);
     x3 = getRandomInt(2/2, 58/2)*increment;
     y3 = getRandomInt(2/2, 38/2)*increment;
-    console.log('third free pokemon',x3, y3);
-    for (var i = 0; i < 3; i++) {
-      var indexOfRandomPokemon = getRandomInt(0, pokemons.length);
-      var randomPokemon = pokemons[indexOfRandomPokemon];
-      field.push(randomPokemon);
-      pokemons.splice(indexOfRandomPokemon, 1);
-    }
-    console.log('original pokemons array', pokemons);
-    console.log('pokemons on island', field);
+    poke3 = pokemons[getRandomInt(0, pokemons.length)];
+    poke3pic.src = "https://img.pokemondb.net/sprites/red-blue/normal/" + poke3.name.toLowerCase() + ".png";
+    console.log('third free pokemon',x3, y3, poke3.name);
   };
 
   document.onkeydown = function(event) {
