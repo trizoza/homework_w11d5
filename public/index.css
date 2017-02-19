@@ -10,18 +10,34 @@ body {
   background-size: cover;
 }
 
-#menu {
+#header {
   display: block;
+  width: 600px;
+  height: 100px;
+  margin: 10px auto 0px;
+}
+
+#header img, h1 {
+  display: inline-block;
+}
+
+#header h1 {
+  font-size: 70px;
+  color: white;
+  margin: 0 0 15px 0;
+}
+
+#menu {
+  display: none;
   width: 600px;
   height: 400px;
   background-color: white;
-  margin: 50px auto;
+  margin: 20px auto;
 }
 
 #island {
   display: block;
-  margin: 50px auto;
-  background-image: url('/img/grass.png');
+  margin: 20px auto;
 }
 
 .show {
