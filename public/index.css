@@ -3,6 +3,10 @@ ul {
   font-family: "pokefont", pokefont, serif;
 }
 
+u {
+  text-decoration: underline;
+}
+
 body {
   background-image: url('/img/sea.jpg');
   background-repeat: no-repeat;
@@ -17,24 +21,43 @@ body {
   margin: 10px auto 0px;
 }
 
-#header img, h1 {
-  display: inline-block;
+#header img {
+  margin: -5px 125px 0px;
+  height: 100px;
+  width: 300px;
 }
 
 #header h1 {
-  font-size: 70px;
+  font-size: 50px;
   color: white;
-  margin: 0 0 15px 0;
+  margin: -30px 0px 0px 230px;
 }
 
-#menu {
+.menu {
   width: 600px;
   height: 400px;
   background-color: white;
   margin: 20px auto;
 }
 
-#island {
+.island {
+  display: none;
+  margin: 20px auto;
+}
+
+.found {
+  display: none;
+  width: 600px;
+  height: 400px;
+  background-color: white;
+  margin: 20px auto;
+}
+
+.fight {
+  display: none;
+  width: 600px;
+  height: 400px;
+  background-color: white;
   margin: 20px auto;
 }
 

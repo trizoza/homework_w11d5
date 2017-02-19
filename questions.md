@@ -1,0 +1,1 @@
+1. how access pokemons attack/weight?
