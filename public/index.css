@@ -18,31 +18,31 @@ body {
   display: block;
   width: 600px;
   height: 100px;
-  margin: 10px auto 0px;
+  margin: 10px auto 10px;
 }
 
 #header img {
-  margin: -5px 125px 0px;
-  height: 100px;
-  width: 300px;
+  display: inline-block;
+  height: 80px;
+  width: 260px;
+  margin-left: 80px;
 }
 
 #header h1 {
+  display: inline-block;
   font-size: 50px;
   color: white;
-  margin: -30px 0px 0px 230px;
 }
 
 .menu {
   width: 600px;
   height: 400px;
-  background-color: white;
-  margin: 20px auto;
+  margin: 0px auto;
 }
 
 .island {
   display: none;
-  margin: 20px auto;
+  margin: 0px auto;
 }
 
 .found {
@@ -50,7 +50,7 @@ body {
   width: 600px;
   height: 400px;
   background-color: white;
-  margin: 20px auto;
+  margin: 0px auto;
 }
 
 .fight {
@@ -58,7 +58,25 @@ body {
   width: 600px;
   height: 400px;
   background-color: white;
-  margin: 20px auto;
+  margin: 0px auto;
+}
+
+.fight, .found, .menu {
+  box-sizing: border-box;
+  padding: 25px;
+  background-color: #f8f8f8;
+}
+
+#sand {
+  box-sizing: border-box;
+  display: block;
+  width: 680px;
+  height: 450px;
+  background-image: url('/img/sand.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: -20px auto;
+  padding: 25px 40px;
 }
 
 .show {
@@ -67,4 +85,9 @@ body {
 
 .hide {
   display:none;
+}
+
+#oak {
+  width: 100px;
+  height: 220px;
 }
