@@ -49,6 +49,20 @@ var app = function(){
     }
   };
 
+  var handleSelectPokemon = function(event) {
+    if (player.length != 0) {
+      for (var each of player) {
+        player.pop();
+      }
+    }
+    player.push(this.value);
+    console.log(this.value);
+    console.log(player);
+  }
+
+  var select = document.querySelector('#pokemon-select');
+  select.onchange = handleSelectPokemon;
+
   ///////////// FIELD GRAPHIC SETUP ////////////////////////////////////
 
   var drawAsh = function() {
