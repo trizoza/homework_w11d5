@@ -5,6 +5,8 @@ var app = function(){
   var field = [];
   var ash = document.createElement('img');
   ash.src = "img/ash.png";
+  var ashWidth = 40; 
+  var ashHeight =ashWidth;
   var grass = document.createElement('img');
   grass.src = "img/grass.png";
   var x = 300;
@@ -66,32 +68,48 @@ var app = function(){
     context.drawImage(grass, 335, 166, 335, 166);
     context.drawImage(grass, 0, 332, 335, 166);
     context.drawImage(grass, 335, 332, 335, 166);
-    context.drawImage(ash, x -20 + xIncrement, y -20 + yIncrement, 40, 40);
+    context.drawImage(ash, x -20 + xIncrement, y -20 + yIncrement, ashWidth, ashHeight);
     x += xIncrement;
     y += yIncrement;
+    console.log(x,y);
   };
 
   document.onkeydown = function(event) {
     var increment = 10;
     console.log(event.keyCode);
     if (event.keyCode === 80) {
+      // p
+      document.querySelector("#menu").classList.toggle("hide");
+      document.querySelector("#island").classList.toggle("show");
       drawAsh();
+      // document.querySelector('#island').classList.toggle('show');
     }
     if (event.keyCode === 39) {
       // right
-      moveAsh(increment, 0);
+      if (x < 580) {
+        moveAsh(increment, 0);
+      }
     }
     if (event.keyCode === 37) {
       // left
-      moveAsh(-increment, 0);
+      if (x > 20) {
+        moveAsh(-increment, 0);
+      }
+      else if (x > -20 && y === 380) {
+        moveAsh(-increment, 0);
+      }
     }
     if (event.keyCode === 38) {
       // up
-      moveAsh(0, -increment);
+      if (y > 20) {
+        moveAsh(0, -increment);        
+      }
     }
     if (event.keyCode === 40) {
       // down
-      moveAsh(0, increment);
+      if (y < 380) {
+        moveAsh(0, increment);
+      }
     }
   };
 

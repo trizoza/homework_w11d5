@@ -28,7 +28,6 @@ body {
 }
 
 #menu {
-  display: none;
   width: 600px;
   height: 400px;
   background-color: white;
@@ -36,14 +35,13 @@ body {
 }
 
 #island {
-  display: block;
   margin: 20px auto;
 }
 
 .show {
-  display: block;
+  display:block;
 }
 
 .hide {
-  display: none;
+  display:none;
 }
