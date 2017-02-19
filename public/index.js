@@ -395,6 +395,7 @@ var app = function(){
           }
         }
       }
+      player[0].attack += 5;
       //////// end of game check ////////////////
       if (player.length === 4) {
         var totalWin = document.createElement('p');
@@ -413,7 +414,7 @@ var app = function(){
       console.log('you lost');
       lostMessage.innerText = "Your strongest Pokémon " + player[0].name 
       + " with attack " + player[0].attack 
-      + " lost with " + foughtPokemon.name
+      + " lost against " + foughtPokemon.name
       + " with attack " + foughtPokemon.attack
       + "! Ooops, game is over!";
       fightScreen.appendChild(lostMessage);
